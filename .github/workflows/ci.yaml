@@ -50,7 +50,9 @@ jobs:
         echo '${{ secrets.JENKINS_LOGIN_CREDENTIALS }}' > ./cypress.env.json
 
     - name: Npx run
-      run: npx cypress run --config baseUrl="https://ci.qatest.site" 
+      run: npx cypress run --headless
+      env:
+          CI_RUN: true 
 
     - name: Create test summary
       uses: test-summary/action@v1.0
