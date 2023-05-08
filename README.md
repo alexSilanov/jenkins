@@ -9,7 +9,9 @@
 
 3. Run command ```npm ci``` in terminal VScode.
 
-4. After, execute ```npx cypress open```  to run tests.
+4. Copy and paste the file ```cypress.env.json.example``` to project root folder. Сhange the file name to ```cypress.env.json```. Put your own credentials for login in json file.
+
+5. After, execute ```npx cypress open```  to run tests.
 
 **Project Coding Convention**
 
@@ -22,10 +24,10 @@ student should create the spec containing the name of the userstory (US): ```hea
 
 **Spec structure:**
 
-- Each block ```describe``` should contain name of group
+- Each block ```describe``` should contain the name of spec file
 - Each test (```it```) should contain name of test case (```AT```) 
-example:
 
+example:
 describe('Header', () => {
 
     it('Verify logo jenkins is visible on the header', function () {
@@ -45,7 +47,9 @@ Students are not allowed to install any libraries, plugins, etc. to avoid changi
 
 ```package.json```
 ```package.lock.json```
-```ci.yml```
-```cancel.yml```
 ```cypress.config.js```
 ```e2e.js```
+```ci.yml```
+```cancel.yml```
+```globalHooks.js```
+```cleanData.js```
