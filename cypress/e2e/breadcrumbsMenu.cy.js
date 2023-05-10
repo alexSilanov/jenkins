@@ -10,7 +10,7 @@ describe('Breadcrumbs',()=>{
             cy.contains(page).click()
             cy.get('#breadcrumbs li>a').first().should('have.text', 'Dashboard').and('be.visible')
             cy.get('.jenkins-breadcrumbs__list-item a[href="/"]').click()
-            cy.url().should('include', 'http://localhost:8080/')
+            cy.get('div[class="empty-state-block"] h1').should('have.text', 'Welcome to Jenkins!')
          })
        })
 })
