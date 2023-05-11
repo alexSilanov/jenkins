@@ -3,4 +3,8 @@
 		"name": "Brand_new_Freestyle_project"
 	},
 	"disabledProjectNotify": "This project is currently disabled"
+
+	"multibranchPipeline": {
+		"name": "Multibranch Pipeline1"
+	}
 }
