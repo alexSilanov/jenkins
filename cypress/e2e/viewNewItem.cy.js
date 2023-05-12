@@ -14,6 +14,7 @@ describe("AT_04.03_010| Breadcrumbs| My view page |Verify that user can open sel
         cy.get('#job_Example > td:nth-child(3) > a > span').click()
         cy.get('#main-panel > h1').should('be.visible')
     })
+    
   });
   
   
