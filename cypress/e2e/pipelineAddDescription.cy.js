@@ -10,7 +10,7 @@ describe('Add description to the pipeline', () =>{
         
     });
 
-    it('verify description can added',()=>{
+    it('verify the description can be added',()=>{
         cy.get('a[href="job/TestPipeline/"] span').click()
         cy.get('#description-link').click()
         cy.get('textarea.jenkins-input')
