@@ -35,4 +35,9 @@ describe('Jenkins Search Box', () => {
         cy.get('a[href="configure"]').click()
         cy.get('#searchform').should('be.visible').click().type('project')
     })
+    
+    it('AT_01.02_015 verify Search Box is visible on the API page', function() {
+        cy.get('a[href="api/"]').click()
+        cy.get('#searchform').should('be.visible').click().type('project')
+    })
 });
