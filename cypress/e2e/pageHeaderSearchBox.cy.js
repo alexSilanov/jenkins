@@ -25,5 +25,10 @@ describe('Jenkins Search Box', () => {
         cy.get('.task a[href="/manage"]').click()
         cy.get('#searchform').should('be.visible').click().type('project')
     })
+    it('AT_01.02_013 verify Search Box is visible on the My Views page', function() {
+        cy.get('.task a[href="/me/my-views"]').click()
+        cy.get('#searchform').should('be.visible').click().type('project')
+    })
    
+    
 });
