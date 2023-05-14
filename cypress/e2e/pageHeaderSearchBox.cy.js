@@ -30,5 +30,9 @@ describe('Jenkins Search Box', () => {
         cy.get('#searchform').should('be.visible').click().type('project')
     })
    
-    
+    it('AT_01.02_014 verify Search Box is visible on the Node Monitoring page', function() {
+        cy.get('a[href="/computer/"]').click()
+        cy.get('a[href="configure"]').click()
+        cy.get('#searchform').should('be.visible').click().type('project')
+    })
 });
