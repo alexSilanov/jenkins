@@ -21,5 +21,9 @@ describe('Jenkins Search Box', () => {
         cy.get('.task a[href="/view/all/builds"]').click()
         cy.get('#searchform').should('be.visible').click().type('project')
     })
-    
+    it('AT_01.02_012 verify Search Box is visible on the Manage Jenkins page', function() {
+        cy.get('.task a[href="/manage"]').click()
+        cy.get('#searchform').should('be.visible').click().type('project')
+    })
+   
 });
