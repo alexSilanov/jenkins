@@ -1,5 +1,5 @@
 /// <reference types='cypress'/>
- describe('Verify <Dashboard>Icon legend', () => {
+describe('Verify <Dashboard>Icon legend', () => {
     beforeEach('Create Project', function () {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type('TestProject')
