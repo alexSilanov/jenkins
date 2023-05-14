@@ -40,4 +40,9 @@ describe('Jenkins Search Box', () => {
         cy.get('a[href="api/"]').click()
         cy.get('#searchform').should('be.visible').click().type('project')
     })
+
+    it('AT_01.02_016 verify Search Box is visible on the User page', function() {
+        cy.get('a[class="model-link"] span[class="hidden-xs hidden-sm"]').click()
+        cy.get('#searchform').should('be.visible').click().type('project')
+    })
 });
