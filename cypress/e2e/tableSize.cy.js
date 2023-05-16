@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe ('<Dashboard>Icons S,M,L', ()=> {
+describe ('Dashboard Icons S,M,L', ()=> {
     it ('Table size S', ()=> {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type('Project1')
@@ -8,7 +8,6 @@ describe ('<Dashboard>Icons S,M,L', ()=> {
         cy.get(':nth-child(1) > .model-link').click()
         
         cy.get('a[href="/iconSize?16x16"]').contains('S').click()
-        // cy.get('#projectstatus').should('have.class', 'jenkins-table--small')
 
         cy.get('#projectstatus').then((obj) => {
             cy.document().then(() => {
