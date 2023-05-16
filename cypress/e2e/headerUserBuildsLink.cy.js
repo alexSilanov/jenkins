@@ -16,4 +16,12 @@ describe('Header - User Builds Link', () => {
         cy.get('h1').should('have.text', 'Builds for ' + userName)
     });
   }); 
+
+  it('AT_01.04_006|<Header> User builds link| Verify the side panel', () =>{
+       
+      cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} );
+      cy.get('.yuimenuitemlabel').contains('Builds').click();
+      cy.get('#side-panel').should('be.visible')
+   });
 });
+
