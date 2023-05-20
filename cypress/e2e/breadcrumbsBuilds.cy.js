@@ -2,9 +2,9 @@
 
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
 
+const USERID = Cypress.env('local.admin.username').toLowerCase();
 
 describe('BreadcrumbsBuilds', () => {
-
     beforeEach('', () => {
         cy.get('a[href^="newJob"]').click();
         cy.get('input#name').type(breadcrumbsBuilds.nameOfProject);
@@ -18,7 +18,7 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('a[href$=admin]').click();
         cy.get('a[href$=builds]').click();
     
-        });
+    });
         
     
     it('AT_04.06 _003 | Verify builds list is sorted in ascending order by default', () => {
@@ -40,6 +40,14 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('#projectStatus tbody>tr:nth-child(even)').should('contain', breadcrumbsBuilds.buildsNumbers.build_2);
 
     });
+
+    
+    it('AT_04.06.001 Breadcrumbs Builds user can see his username in the title of the table.', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('div#main-panel h1').should('have.text', `Builds for ${USERID}`)
+    })
 
     it('AT_04.06.002 clicking on S, M, L will change the icon size', function () {
         cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
