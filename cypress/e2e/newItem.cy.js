@@ -1,6 +1,7 @@
-import newItemNames from '../fixtures/newItemNames.json'
+import newItemNames from '../fixtures/newItemNames.json';
+import pages from '../fixtures/pages.json'
 
-describe('US_05.08 New Item Names and Icons', () => {
+describe('newItem', () => {
     it('TC_05.08_007 Verify item names', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('.j-item-options li span')
@@ -31,6 +32,12 @@ describe('US_05.08 New Item Names and Icons', () => {
         cy.url().should('contain', '/view/all/newJob')
     });
 
+    it('AT_05.08_0006 | <New Item> New Item page name in the header', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('head title')
+            .should('have.text', pages.newItemPageTitle)
+    });
+
     it('AT_05.08_009 | New item | Verify that page with New Items displayed after click on the button New Item', function () {
         const correctItems = 'Passed';
         const wrongItems = 'Failed';
@@ -55,5 +62,4 @@ describe('US_05.08 New Item Names and Icons', () => {
 
         cy.get('.icon img').should('be.visible')
     });
-
 })
