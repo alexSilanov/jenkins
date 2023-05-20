@@ -13,7 +13,7 @@ describe('dashboardMainPanelDescription', () => {
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it("AT_02.06_006| Dashboard > Input description text equals to preview text", () => {
+    it("AT_02.06_006| Dashboard > Preview text equals to input description text", () => {
         cy.get("a#description-link").click() 
         cy.get(".jenkins-input").type(descriptionsProject.addDescriptionProject).invoke('val').as('descr')
         cy.get('@descr').then((descr) => {
