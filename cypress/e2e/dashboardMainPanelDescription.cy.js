@@ -14,7 +14,6 @@ describe('dashboardMainPanelDescription', () => {
     })
 
     it("AT_02.06_006| Dashboard > Input description text equals to preview text", () => {
-        let txt
         cy.get("a#description-link").click() 
         cy.get(".jenkins-input").type(descriptionsProject.addDescriptionProject).invoke('val').as('descr')
         cy.get('@descr').then((descr) => {
