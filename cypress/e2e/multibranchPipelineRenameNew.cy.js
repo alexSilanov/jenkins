@@ -10,8 +10,8 @@ describe('Multibranch Pipeline Rename', ()=>{
     })
     it('Multibranch Pipeline Rename-inside the selected Multibranch Pipeline',()=>{
         cy.get('[class="model-link"]').contains('Dashboard').click()
-        cy.get('a[href="job/mew%20name/"]').click()
-        cy.get('a[href="/job/mew%20name/confirm-rename"]').click()
+        cy.get('a[href*="job/"]').click()
+        cy.get('a[href$="/confirm-rename"]').click()
         cy.get('input[checkdependson="newName"]').clear().type(newNamePipeline.newName)
         cy.get('button[name="Submit"]').click()
 
