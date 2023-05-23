@@ -8,7 +8,7 @@ describe('<My Views > Add description',() => {
         cy.get('.jenkins-button--primary').click()
     })
     
-    it('Add descriprions of my views',()=>{
+    it('AT_09.02.001|Add descriprions of my views',()=>{
         cy.get('a[href*="/me/my-views"]').click()
         cy.get('#description-link').should('be.visible').click()
         cy.get('.jenkins-input').click().type(myViewsAddDescr.describeText)
