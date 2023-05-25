@@ -63,5 +63,14 @@ describe('Side panel sub menu', () => {
         cy.get('[href="/me/my-views"].task-link ').click();
         cy.get('[href="/me/my-views/"]').contains('My Views')
     })
+
+    it('AT_02.04_013 | <Homepage(Dashboard)> Verify 5 items of the sub-menu', () => {
+        cy.get('#tasks .task').should('have.length', dashboardDropdownItems.length)
+        cy.get('a[href="/view/all/newJob"]').should('have.text', dashboardDropdownItems[0])
+        cy.get('a[href="/asynchPeople/"]').should('have.text', dashboardDropdownItems[1])
+        cy.get('a[href$="/builds"]').should('have.text', dashboardDropdownItems[2])
+        cy.get('a[href="/manage"] .task-link-text').should('have.text', dashboardDropdownItems[3])
+        cy.get('a[href="/me/my-views"] .task-link-text').should('have.text', dashboardDropdownItems[4])              
+    })
 })
 
