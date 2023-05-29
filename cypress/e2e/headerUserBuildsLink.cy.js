@@ -25,7 +25,7 @@ describe('Header - User Builds Link', () => {
     cy.get('div.login.page-header__hyperlinks button.jenkins-menu-dropdown-chevron').click({force:true})
     cy.get('li.yuimenuitem a span').contains('Builds').click()
     
-    cy.get('a.model-link span.hidden-xs.hidden-sm').then(($span) => {
+    cy.get('').then(($span) => {
         const userName = $span.text()
         cy.url().should("contain", "/user/" + userName + "/builds")
         cy.get('h1').should('have.text', 'Builds for ' + userName)
@@ -67,5 +67,12 @@ describe('Header - User Builds Link', () => {
     .should('deep.equal', expectedProjectName)
   })
 
-});
+  const login = Cypress.env('local.admin.username').toLowerCase();
 
+  it.only('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
+    cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} )
+    cy.get('#breadcrumb-menu-target a[href*="builds"]').should('be.visible').click()
+    cy.location('pathname').should('eq', `/user/${login}/builds`)
+    cy.get('#main-panel h1').should('include.text', `Builds for ${login}`)
+  })
+});
