@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import {title} from '../fixtures/buildLinkPage.json'
+
 const expectedProjectName = [
   'TestProject3',
   'TestProject2',
@@ -67,11 +69,12 @@ describe('Header - User Builds Link', () => {
     .should('deep.equal', expectedProjectName)
   })
 
-  it('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
+  it.only('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
     const login = Cypress.env('local.admin.username').toLowerCase();
-    cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} )
+    // cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} )
+    cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
     cy.get('#breadcrumb-menu-target a[href*="builds"]').should('be.visible').click()
     cy.location('pathname').should('eq', `/user/${login}/builds`)
-    cy.get('#main-panel h1').should('include.text', `Builds for ${login}`)
+    cy.get('#main-panel h1').should('include.text', title + `${login}`)
   })
 });
