@@ -68,7 +68,7 @@ describe('Header - User Builds Link', () => {
     })
     .should('deep.equal', expectedProjectName)
   })
-
+  
   it('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
     const login = Cypress.env('local.admin.username').toLowerCase();
     cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
