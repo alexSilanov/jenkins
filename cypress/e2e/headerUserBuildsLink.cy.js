@@ -71,7 +71,6 @@ describe('Header - User Builds Link', () => {
 
   it.only('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
     const login = Cypress.env('local.admin.username').toLowerCase();
-    // cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} )
     cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
     cy.get('#breadcrumb-menu-target a[href*="builds"]').should('be.visible').click()
     cy.location('pathname').should('eq', `/user/${login}/builds`)
