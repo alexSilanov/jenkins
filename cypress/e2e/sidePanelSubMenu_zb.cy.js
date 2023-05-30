@@ -73,7 +73,7 @@ describe('Side panel sub menu', () => {
         cy.get('a[href="/me/my-views"] .task-link-text').should('have.text', dashboardDropdownItems[4])              
     })
     
-    it.only('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
+    it('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
         cy.get('.task').should('have.length', dashboardDropdownItems.length)
           .each(($el,idx) =>{
             let name = $el.text()
