@@ -4,9 +4,9 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
+    getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
-    getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
 
 
     typeNewItemNameInputField(name) {
