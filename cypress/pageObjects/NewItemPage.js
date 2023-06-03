@@ -1,10 +1,12 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
+import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
+    getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
 
 
     typeNewItemNameInputField(name) {
@@ -26,6 +28,16 @@ class NewItemPage {
         return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });
+    };
+
+    selectFreestyleProjectItem() {
+        this.getFreestyleProjectItem().click();
+        return this;
+    };
+
+    clickOkBtnAndGoFreestyleProjectConfig() {
+        this.getNewItemOkBtn().click();
+        return new FreestyleProjectConfigurePage();
     };
 }
 
