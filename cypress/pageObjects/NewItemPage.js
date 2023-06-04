@@ -1,4 +1,5 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 class NewItemPage {
@@ -7,6 +8,7 @@ class NewItemPage {
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
+    getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
 
 
     typeNewItemNameInputField(name) {
@@ -30,6 +32,15 @@ class NewItemPage {
         });
     };
 
+    selectMultiConfigurationProjectItem() {
+        this.getMultiConfigurationProjectItem().click();
+        return this;
+      }
+
+      clickOkBtnAndGoMultiConfProjectConfig() {
+        this.getNewItemOkBtn().click();
+        return new MultiConfigurationProjectConfigurePage();
+      }
     selectFreestyleProjectItem() {
         this.getFreestyleProjectItem().click();
         return this;
