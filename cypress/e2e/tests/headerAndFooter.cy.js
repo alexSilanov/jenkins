@@ -3,9 +3,10 @@
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
 import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
 import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import {userDropdownMenuItems, searchBoxPlaceholder} from "../../fixtures/pom_fixtures/headerAndFooter.json";
+
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -35,11 +36,16 @@ describe('headerAndFooter', () => {
            .should('deep.equal', userDropdownMenuItems);
      });
 
-
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
             .searchTextSearchBox(inputText)
             .getResultNoMatch()
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
+
+    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+        headerAndFooter
+            .getSearchBoxInputField()
+            .should('have.attr', 'placeholder', searchBoxPlaceholder);
+    });
 })
