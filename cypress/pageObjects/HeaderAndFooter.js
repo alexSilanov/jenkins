@@ -16,6 +16,7 @@ class HeaderAndFooter {
     getSearchBox = () => cy.get('#search-box');
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
+    getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -58,10 +59,21 @@ class HeaderAndFooter {
     clickLogOutBtn() {
         this.getLogOutBtn().click();
         return new LoginPage();
-      
-    getSearchBoxInputField() {
-        return this.getSearchBoxInputField();       
+    }
 
+    typeSearchBoxInputField(text) {
+        this.getSearchBoxInputField().type(text);
+        return this;
+    }
+
+    trimSearchBoxResultDropDownList() {
+        return this.getSearchBoxResultDropDownList().each(($el) => {
+            return cy.wrap($el.text().trim());
+        });
+    }
+
+    isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
+        return text.includes(lowerLetter) || text.includes(upperLetter);
     }
 }
 export default HeaderAndFooter;
