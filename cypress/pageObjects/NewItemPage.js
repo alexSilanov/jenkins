@@ -17,8 +17,8 @@ class NewItemPage {
     getNewItenHeader = () => cy.get('.header .h3');
     getFolderItem = () => cy.get('li[class*="folder"]');
     getNewItemHeader = () => cy.get('.header .h3');
-  
-  
+    
+
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
         return this;
