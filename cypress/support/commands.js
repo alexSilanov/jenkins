@@ -25,9 +25,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import HomePage from "../pageObjects/HomePage";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
+import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
+const dashbord = new DashboardBreadcrumbs;
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -47,6 +49,16 @@ Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProje
         .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
+})
+
+Cypress.Commands.add('createOrgFolderProject', (folderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(folderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();
 })
 
 Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
