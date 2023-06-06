@@ -7,7 +7,7 @@ import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
-import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
