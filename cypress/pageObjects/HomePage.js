@@ -33,6 +33,10 @@ class HomePage {
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getAddDescriptionLink = () => cy.get('#description-link');
+    getAddDescriptionField = () => cy.get('.jenkins-input ');
+    getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
+    getSavedDescriptionField = () => cy.get('#description');
     getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
 
@@ -120,6 +124,21 @@ class HomePage {
     return new BuildHistoryPage;
   }
 
+  clickAddDescriptionLink() {
+    this.getAddDescriptionLink().click();
+    return this;
+  }
+
+  typeDescriptionIntoField(text){
+    this.getAddDescriptionField().clear().type(text);
+    return this;
+  }
+
+  clickSaveDescriptionBtn(){
+    this.getSaveDescriptionBtn().click();
+    return this;
+  }
+
   selectRenameMultiConfProjectDrpDwnMenuBtn() {
     this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
     return new MultiConfProjectRenamePage();
@@ -129,6 +148,7 @@ class HomePage {
     this.getNamesProjects().click()
     return new FreestyleProjectPage()
   }
+
 }
 
 export default HomePage;
