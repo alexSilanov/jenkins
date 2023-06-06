@@ -10,6 +10,7 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 
 class HomePage {
@@ -32,6 +33,7 @@ class HomePage {
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
 
   clickPeopleSideMenuLink() {
@@ -116,6 +118,11 @@ class HomePage {
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
+  }
+
+  selectRenameMultiConfProjectDrpDwnMenuBtn() {
+    this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
+    return new MultiConfProjectRenamePage();
   }
 
   clickNamesProjects() {
