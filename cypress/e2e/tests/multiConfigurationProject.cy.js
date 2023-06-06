@@ -6,11 +6,9 @@ import multiConfProjectPage from "../../fixtures/pom_fixtures/multiConfProjectPa
 
 describe("multiConfigurationProject", () => {
     const headerAndFooter = new HeaderAndFooter();
-    beforeEach(() => {
-        cy.createMultiConfigurationProject(name);
-    })
 
     it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
+        cy.createMultiConfigurationProject(name);
         headerAndFooter
             .clickJenkinsHomeLink()
             .clickMultiConfigProjectNameLink(name)
@@ -20,6 +18,7 @@ describe("multiConfigurationProject", () => {
     });
 
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
+        cy.createMultiConfigurationProject(name);
         headerAndFooter
             .clickJenkinsHomeLink()
             .clickProjectDrpDwnBtn()
