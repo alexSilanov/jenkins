@@ -1,16 +1,13 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import { restAPIPageTitle } from "../../fixtures/pom_fixtures/restAPIPage.json";
-import { homePageHeader } from "../../fixtures/pom_fixtures/homePage.json";
+import {  restAPIPageTitle  } from "../../fixtures/pom_fixtures/restAPIPage.json";
+import {  homePageHeader  } from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
-<<<<<<< HEAD
 import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
-=======
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
->>>>>>> d60fbe7139b77fc1abb797b762bc68b587082bb1
 
 describe('headerAndFooter', () => {
 
@@ -78,7 +75,7 @@ describe('headerAndFooter', () => {
             })
     });
 
-    it.only('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () =>{
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () =>{
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
