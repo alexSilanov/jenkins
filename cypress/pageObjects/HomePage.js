@@ -157,13 +157,18 @@ class HomePage {
     this.getNamesProjects().click()
     return new FreestyleProjectPage()
   }
-
+  
   createSidePanelItemsList() {
     return this.getSideMenuPanel().then(($els) => {
       return Cypress.$.makeArray($els).map($elem => $elem.innerText);
     })
   }
 
+  hoverAndClickProjectDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
+    return this;
+  }
 }
 
 export default HomePage;
