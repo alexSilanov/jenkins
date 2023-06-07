@@ -7,6 +7,7 @@ import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
+import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
@@ -81,4 +82,14 @@ describe('headerAndFooter', () => {
             .selectUserMyViewsMenu()
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbs.dashboardDropdownMenu[4])
     })
+    
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+        headerAndFooter
+            .getJenkinsLinkVerNumber()
+            .should('be.visible')
+            .and('have.text', version.number)
+            .and('have.attr', 'href', version.link)
+            .and('have.css', 'color', version.rgb)
+    })
+
 })

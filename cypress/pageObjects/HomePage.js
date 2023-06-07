@@ -7,9 +7,12 @@ import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
 import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
+import homePage from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 
 class HomePage {
@@ -24,15 +27,24 @@ class HomePage {
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getSearchBox = () => cy.get('#search-box');
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
+
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getAddDescriptionBtn = () => cy.get("a#description-link");
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getAddDescriptionLink = () => cy.get('#description-link');
+    getAddDescriptionField = () => cy.get('.jenkins-input ');
+    getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
+    getSavedDescriptionField = () => cy.get('#description');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
+    getSideMenuPanel = () => cy.get('#tasks .task');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -84,6 +96,17 @@ class HomePage {
     return new ResultSearchBoxPage();
   }
 
+  clickProjectDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
+    return this;
+  }
+  
+  selectDeleteDrpDwnLink(){
+    this.getDeleteDrpDwnLink().click()
+    return this;
+  }
+
   selectDeleteMultiConfProjectDrpDwnMenuBtn() {
     this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
     return this;
@@ -104,6 +127,12 @@ class HomePage {
     return new FoldersAndMultibrPipelineDeletePage();
   }
 
+
+  clickAddDescriptionBtn() {
+    this.getAddDescriptionBtn().click();
+    return this;
+  }
+
   clickScheduleBuildBtn() {
     return this.getScheduleBuildBtn().click();
   }
@@ -116,11 +145,44 @@ class HomePage {
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
+
+  }
+
+  clickAddDescriptionLink() {
+    this.getAddDescriptionLink().click();
+    return this;
+  }
+
+  typeDescriptionIntoField(text){
+    this.getAddDescriptionField().clear().type(text);
+    return this;
+  }
+
+  clickSaveDescriptionBtn(){
+    this.getSaveDescriptionBtn().click();
+    return this;
+  }
+
+  selectRenameMultiConfProjectDrpDwnMenuBtn() {
+    this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
+    return new MultiConfProjectRenamePage();
   }
 
   clickNamesProjects() {
     this.getNamesProjects().click()
     return new FreestyleProjectPage()
+  }
+  
+  createSidePanelItemsList() {
+    return this.getSideMenuPanel().then(($els) => {
+      return Cypress.$.makeArray($els).map($elem => $elem.innerText);
+    })
+  }
+
+  hoverAndClickProjectDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
+    return this;
   }
 }
 
