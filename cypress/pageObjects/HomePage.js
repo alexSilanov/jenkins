@@ -171,7 +171,7 @@ class HomePage {
     })
   }
 
-  clickFolderNameLink() {
+  clickOnFolderNameLink() {
     this.getProjectNameLink().click();
     return new FolderPage();
   }
