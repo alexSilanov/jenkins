@@ -2,10 +2,21 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import { sidePanelItems } from "../../fixtures/pom_fixtures/homePage.json"
+import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json";
 import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json"
+import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
+
+    sidePanelItems.forEach((item, idx) => {
+      it(`AT_02.04_009 | <Homepage> Verify all ${item} of the sub-menu redirect to the proper pages`, function () {
+        homePage
+          .clickSideMenuPanelItem(idx)
+          .should('contain', endPointUrl[idx])
+      })
+    })
 
     it("AT_02.06_005 | Homepage > Verification of the link 'Add description'", () => {
         homePage
@@ -13,10 +24,10 @@ describe("homePage", () => {
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
+    it('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
-          .should('deep.equal', homePageData.sidePanelItems)
+          .should('deep.equal', sidePanelItems)
     });
 
     it("AT_02.06_004 | Homepage > Description input textarea does not exist", () => {
