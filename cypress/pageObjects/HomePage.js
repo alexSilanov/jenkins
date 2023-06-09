@@ -20,6 +20,7 @@ import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 import BuildPage from "./BuildPage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -287,12 +288,16 @@ class HomePage {
     this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
     return this
   };
+
   clickBuildTableLink() {
     this.getBuildTableLink().click()
     return BuildPage;
   }
 
+  clickMultiConfProjectDrpDwnConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new MultiConfigurationProjectConfigurePage();
+  }
 };
-
 
 export default HomePage;
