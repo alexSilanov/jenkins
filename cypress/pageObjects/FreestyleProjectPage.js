@@ -71,8 +71,6 @@ class FreestyleProjectPage {
         return this 
     }
 
-};
-
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
         return new HomePage;

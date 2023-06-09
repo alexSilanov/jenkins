@@ -107,7 +107,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
-    it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
 
         homePage
