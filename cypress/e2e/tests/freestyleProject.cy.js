@@ -11,19 +11,19 @@ describe('freestyleProject', () => {
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
-    
+
 
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()            
+            .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .typeNewNameInputFild(freestyleProjectPageData.freestyleProjectNewName)
             .clickRenameBtn()
-            .getFreestyleProjectHeader()            
+            .getFreestyleProjectHeader()
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
 
@@ -36,7 +36,7 @@ describe('freestyleProject', () => {
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .clickRenameBtn()
-            .getFreestyleProjectHeader()   
+            .getFreestyleProjectHeader()
             .should('have.text', freestyleProjectPageData.errorMessage);
     })
 
@@ -107,8 +107,9 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+    it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-        
+
         homePage
             .clickFreestyleProjectNameLink()
             .clickAddAndEditDescriptoinBtn()
@@ -119,9 +120,9 @@ describe('freestyleProject', () => {
             .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
             .getDescriptionInputField()
             .should('have.value', freestyleProjectPageData.editDescription)
-    });
+        });
         
-    it.only('AC_12.01_007 | Freestyle project>check that the options is visible of the left side panel', () => {
+    it('AC_12.01_007 | Freestyle project>check that the options is visible of the left side panel', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
         homePage
             .clickFreestyleProjectNameLink(newItemPageData.freestyleProjectName)
@@ -129,4 +130,14 @@ describe('freestyleProject', () => {
             .getSidePanelOptions().each(($el, idx) => {
                 expect($el).to.include.text(freestyleProjectPageData.sidePanel[idx])})
     })
+
+    it('AT_12.02_008 | Delete created project with inside menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickDeleteSideMenuLink()
+            .getProjectTable()
+            .should('not.exist');
+    });
 })
