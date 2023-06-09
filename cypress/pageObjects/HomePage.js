@@ -16,6 +16,7 @@ import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -269,7 +270,10 @@ class HomePage {
     this.getScheduleBuildBtn().click();
     return this;
   }
-
+  clickPipelineProjectNameDropdownConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new PipelineProjectConfigurePage();
+  }
   clickScheduleBuildForProjectNameBtn(projectName) {
     this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
     return this
