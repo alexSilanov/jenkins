@@ -18,11 +18,13 @@ class FreestyleProjectPage {
     getAddAndEditDescriptoinBtn = () => cy.get('#description-link');
     getDescriptionInputField = () => cy.get('.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('.jenkins-button--primary');
+    getSidePanelOptions = () => cy.get('#side-panel .task span a[href]');
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
         return new FreestyleProjectConfigurePage()
     };
+
     clickRenameSideMenuLink() {
         this.getRenameSideMenuLink().click();
         return new FreestyleProjectRenamePage();
@@ -62,6 +64,11 @@ class FreestyleProjectPage {
         this.getDescriptionInputField().clear();
         return this
     }
-    
-}
+
+    checkLengthOfOptionsSidePanel() {
+        this.getSidePanelOptions().should('have.length', 7)
+        return this 
+    }
+
+};
 export default FreestyleProjectPage;
