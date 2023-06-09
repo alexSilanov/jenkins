@@ -91,8 +91,10 @@ class HomePage {
   getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+  getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
+
 
 
   clickSideMenuPanelItem(idx) {
