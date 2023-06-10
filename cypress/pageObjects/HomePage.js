@@ -96,6 +96,7 @@ class HomePage {
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
   getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
+  getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
 
 
   clickSideMenuPanelItem(idx) {
