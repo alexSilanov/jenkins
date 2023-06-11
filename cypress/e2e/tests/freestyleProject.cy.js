@@ -139,7 +139,7 @@ describe('freestyleProject', () => {
             .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
             .getDescriptionInputField()
             .should('have.value', freestyleProjectPageData.editDescription)
-        });
+    });
         
     it('AC_12.01_007 | Freestyle project>check that the options is visible of the left side panel', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
@@ -148,7 +148,7 @@ describe('freestyleProject', () => {
             .checkLengthOfOptionsSidePanel()
             .getSidePanelOptions().each(($el, idx) => {
                 expect($el).to.include.text(freestyleProjectPageData.sidePanel[idx])})
-    })
+    });
 
     it('AT_12.02_008 | Delete created project with inside menu', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
@@ -159,4 +159,14 @@ describe('freestyleProject', () => {
             .getProjectTable()
             .should('not.exist');
     });
-})
+
+    it('AT_20.03_006 | Verify length and name items of dropdown menu of the Freestyle project', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
+        freestyleProjectPage
+            .clickFreestyleProjectDrpDwnMenu()
+            .checkFreestyleProjectDrpDwnMenuItemsName()
+            .getFrestyleProjectDrpDwmMenuList()
+            .should('have.length', freestyleProjectPageData.freestyleDropdownItems.length)
+    })
+});
