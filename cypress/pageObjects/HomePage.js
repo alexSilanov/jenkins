@@ -26,6 +26,7 @@ import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
 import homePageData from "../fixtures/pom_fixtures/homePage.json"
 import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
+import ConfigureCloudsPage from "./ConfigureCloudsPage";
 
 class HomePage {
 
@@ -112,6 +113,7 @@ class HomePage {
   getManageJenkinsSideMenu = () => cy.get('a[href="/manage"]');
   getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
   getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
+  getConfigureACloudLink = () => cy.get('a[href="configureClouds"]')
 
 
   verifyPipeLineDrpDwnMenu() {
@@ -406,6 +408,11 @@ class HomePage {
   clickProjectNameDropdownRenameLink() {
     this.getProjectNameDropdownRenameLink().click()
     return new FreestyleProjectRenamePage();
+  }
+
+  clickConfigureACloudLink() {
+    this.getConfigureACloudLink().click()
+    return new ConfigureCloudsPage();
   }
 };
 export default HomePage;
