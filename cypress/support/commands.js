@@ -149,6 +149,20 @@ Cypress.Commands.add('addBuildDescription', (buildDescription) => {
         .clickJenkinsHomeLink();
 });
 
+Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailAddress) =>{
+    homePage
+        .clickManageJenkinsSideMenu()
+        .clickManageUsersLink()
+        .clickCreateUserBtn()
+        .typeUserNameInputField(userName)
+        .typePasswordInputField(password)
+        .typeConfirmPasswordInputField(confirmPassword)
+        .typeEmailAddressInputField(emailAddress)
+        .clickCreateUserBtn();
+    dashbord
+        .clickDashboardLinkAndGoHomePage();
+});
+
 Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
     homePage
           .clickNewItemSideMenuLink()

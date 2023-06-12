@@ -24,6 +24,7 @@ import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectC
 import PipelinePage from "./PipelinePage";
 import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
 import homePageData from "../fixtures/pom_fixtures/homePage.json"
+import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
@@ -108,6 +109,7 @@ class HomePage {
   getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
   getTable = () => cy.get('#projectstatus')
   getProjectDropdownMenuBtn = () => cy.get ('td>a');
+  getManageJenkinsSideMenu = () => cy.get('a[href="/manage"]');
   getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
   getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
 
@@ -393,13 +395,18 @@ class HomePage {
   clickProjectDropdownMenuBtn() {
     this.getProjectDropdownMenuBtn().realHover().click('right');
     return this;
- };
- 
- clickWindowConfirmCancel(windowConfirmText) {
-  cy.on('window:confirm', (str) => {
-    expect(str).to.eq(windowConfirmText)
-    return false})
- }
+  }; 
+
+  clickManageJenkinsSideMenu() {
+    this.getManageJenkinsSideMenu().click();
+    return new ManageJenkinsPage();
+  } 
+
+  clickWindowConfirmCancel(windowConfirmText) {
+    cy.on('window:confirm', (str) => {
+      expect(str).to.eq(windowConfirmText)
+      return false})
+  }
   
   clickProjectNameDropdownRenameLink() {
     this.getProjectNameDropdownRenameLink().click()
