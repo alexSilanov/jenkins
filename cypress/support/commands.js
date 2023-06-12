@@ -158,3 +158,15 @@ Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
     headerAndFooter
           .clickJenkinsHomeLink()
 });
+
+Cypress.Commands.add('createNewView', (viewName, viewType) => {
+    homePage
+        .clickMyViewSideMenuLink()
+        .verifyAndClickAddNewViewLink()
+        .typeNewViewNameIntoInputField(viewName)
+        .checkViewTypeRadioButton(viewType)
+        .clickCreateNewViewButton()
+        .clickOkButtonSaveView();
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});
