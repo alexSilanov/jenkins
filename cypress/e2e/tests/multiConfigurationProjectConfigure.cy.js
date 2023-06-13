@@ -74,4 +74,23 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickAdvancedBtn()
       .assertAdvancedOptionsCheckboxesUnChecked()    
   });
+
+  it.only('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+    homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .clickAdvancedBtn()
+      .getAdvancedOptionsBlock()
+      .within(($elem) => {
+          cy.wrap($elem)
+            .find('input[type="checkbox"]')
+            .should('be.visible')
+            .and('be.enabled')
+          cy.wrap($elem)
+            .find('input[name="_.displayNameOrNull"]')
+            .should('be.visible')
+            .and('be.enabled')
+        })
+    });
 });
