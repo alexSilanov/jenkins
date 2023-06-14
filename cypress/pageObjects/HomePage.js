@@ -118,6 +118,7 @@ class HomePage {
     getDashboardElement = () => cy.get('.dashboard');
     getDeleteOrgFolderDrpDwnMenuBtn = () =>
         cy.get("#breadcrumb-menu li:nth-child(4) span")
+    
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -182,7 +183,7 @@ class HomePage {
 
     hoverAndClickProjectDrpDwnBtn(projectName) {
         this.getProjectNameLink().contains(projectName).realHover();
-        this.getProjectDrpDwnBtn().click();
+        this.getProjectDrpDwn(projectName).click();
         return this;
     }
 
@@ -429,6 +430,7 @@ class HomePage {
         this.getDeleteOrgFolderDrpDwnMenuBtn().click();
         return new OrgFolderDeletePage();
     }
+
 }
 
 export default HomePage;
