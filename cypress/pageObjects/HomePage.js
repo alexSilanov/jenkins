@@ -29,6 +29,7 @@ import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
 import OrgFolderDeletePage from "./OrgFolderDeletePage";
+import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 
 class HomePage {
 
@@ -119,6 +120,7 @@ class HomePage {
     getDeleteOrgFolderDrpDwnMenuBtn = () =>
         cy.get("#breadcrumb-menu li:nth-child(4) span")
     getNewViewLink = () => cy.get('[href="/newView"]');
+    getLearnMoreAboutDistributedBuildsLink = () => cy.get('.content-block__help-link');
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -430,6 +432,7 @@ class HomePage {
         this.getDeleteOrgFolderDrpDwnMenuBtn().click();
         return new OrgFolderDeletePage();
     }
+
     selectConfigPipelineDrpDwnMenuBtn(){
       this.getProjectNameDropdownConfigureLink().click()
       return new PipelineProjectConfigurePage()
@@ -438,6 +441,11 @@ class HomePage {
     clickNewViewLink() {
         this.getNewViewLink().click();
         return new NewViewPage();
+    }
+
+    clickLearnMoreAboutDistributedBuildsLink() {
+        this.getLearnMoreAboutDistributedBuildsLink().invoke('removeAttr','target').click();
+        return new DistributedBuildsLinkPage(); 
     }
 }
 
