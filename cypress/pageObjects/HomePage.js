@@ -420,7 +420,7 @@ class HomePage {
         return new ConfigureCloudsPage();
     }
 
-    retrieveWelcomeMessage() {
+    getWelcomeMessage() {
         return this.getHomepageHeader().then($el => {
             return $el.text().trim();
         });
