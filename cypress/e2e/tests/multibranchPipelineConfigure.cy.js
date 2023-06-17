@@ -108,4 +108,16 @@ describe('multibranchPipelineConfigure', () => {
         .getCheckbox()
         .should('have.length', 4)
     })
+
+    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
+          .checkPeriodicallyPopUpQstMarkText()
+          .clickPeriodicallyQuestionMark() 
+          .checkPeriodicallyHelpText1Visible()
+          .clickPeriodicallyQuestionMark()
+          .getPeriodicallyHelpText1()
+            .should('not.be.visible')
+    })
 });
