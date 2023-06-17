@@ -76,7 +76,7 @@ describe("homePage", () => {
       .should('have.text', configureCloudsHeader)
     })
 
-    it.only('AT_02.06.002 Homepage > User is able to add and edit the text in the panel description"', () => {
+    it('AT_02.06.002 Homepage > User is able to add and edit the text in the panel description"', () => {
       homePage
         .clickAddDescriptionLink()
         .typeDescriptionIntoField(homePageData.descriptionText)
