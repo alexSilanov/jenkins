@@ -1,20 +1,18 @@
-/// <reference types="cypress" />
-
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json";
+import {userFullName} from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
-describe('userConfigure', () => {
 
-    const headerAndFooter = new HeaderAndFooter();
+describe('userConfigure', function() {
+    const header = new HeaderAndFooter();
 
-    it('verify user can rename Fullname ans name is changed in user profile', () => {
-        
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .selectUserConfigureMenu()
-            .typeFullNameInputField(userConfigurePageData.userFullName)
-            .clickUserConfigSaveBtn()
-            .trimUserPageHeaderName()
-            .should('eq', userConfigurePageData.userFullName)
+
+    it('verify user can rename Fullname and the name is changed in user profile', function () {
+        header
+          .clickUserDropDownBtn()
+          .selectUserConfigureMenu()
+          .typeFullNameInputField(userFullName)
+          .clickUserConfigSaveBtn()
+          .trimUserPageHeaderName()
+          .should('eq', userFullName)
     })
 })
